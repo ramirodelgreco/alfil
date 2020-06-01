@@ -1,0 +1,11 @@
+{
+  "name": "pulpo",
+  "version": "1.0.0",
+  "description": "Minimal data validation library.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "pascualmj",
+  "license": "ISC"
+}
