@@ -1,14 +1,12 @@
-const Pulpo = require("./dev/Pulpo");
+const Pulpo = require("./src/Pulpo");
 
 const formFields = {
-  firstName: "Manuel",
-  lastName: "Pascual",
+  firstName: "James",
+  lastName: "Doe",
 };
 
 const contactFormValidator = Pulpo.createValidator({
-  firstName: Pulpo.string().required().min(6),
-  lastName: Pulpo.string().required().min(6),
+  firstName: Pulpo.string().required().min(5).max(32),
 });
 
-const resultado = contactFormValidator.validate(formFields);
-console.log(resultado);
+contactFormValidator.validate(formFields);

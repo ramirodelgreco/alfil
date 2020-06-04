@@ -1,11 +1,7 @@
 module.exports = {
   arraysAreEqual(_arr1, _arr2) {
     // Check if 2 arrays have the same values (returns a boolean)
-    if (
-      !Array.isArray(_arr1) ||
-      !Array.isArray(_arr2) ||
-      _arr1.length !== _arr2.length
-    )
+    if (!Array.isArray(_arr1) || !Array.isArray(_arr2) || _arr1.length !== _arr2.length)
       return false;
 
     var arr1 = _arr1.concat().sort();

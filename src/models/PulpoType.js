@@ -1,13 +1,16 @@
 class PulpoType {
   constructor() {
     this.validatorChain = [];
+    this.errors = [];
   }
 
   runValidations(value) {
     let result = true;
-    if (!this.isCorrectType(value)) result = false;
     for (let validator of this.validatorChain) {
-      if (!validator(value)) result = false;
+      if (!validator[0](value)) {
+        this.errors.push(validator[1]);
+        result = false;
+      }
     }
     return result;
   }

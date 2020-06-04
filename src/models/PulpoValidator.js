@@ -19,9 +19,13 @@ class PulpoValidator {
           [key]: {
             value: obj[key],
             isValid: this.schema[key].runValidations(obj[key]),
+            ...(this.schema[key].errors.length && {
+              errors: this.schema[key].errors,
+            }),
           },
         });
       }
+      // this.checkOveralValidation();
     }
     return { ...this.validationResults };
   }
@@ -33,11 +37,26 @@ class PulpoValidator {
         ...this.validationResults.data,
         ...field,
       };
-      this.validationResults.isValid = field[Object.keys(field)[0]].isValid;
+      this.validationResults = {
+        ...this.validationResults,
+        ...(!field[Object.keys(field)[0]].isValid && { isValid: false }),
+      };
     }
     if (isValid !== undefined) this.validationResults.isValid = isValid;
     if (error !== undefined) this.validationResults.error = error;
+    if (this.validationResults.isValid === undefined) this.validationResults.isValid = true;
   }
+
+  // checkOveralValidation() {
+  //   if (!this.validationResults.data) return;
+  //   this.validationResults.isValid = true;
+  //   for (let field in this.validationResults.data) {
+  //     if (!this.validationResults.data[field].isValid) {
+  //       this.validationResults.isValid = false;
+  //       break;
+  //     }
+  //   }
+  // }
 
   static isObjectEqualToSchema(obj, schema) {
     return utils.arraysAreEqual(Object.keys(schema), Object.keys(obj));
