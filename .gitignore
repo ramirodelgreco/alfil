@@ -5,3 +5,6 @@
 .DS_STORE
 
 pulpo.playground.js
+
+# Build directory
+/lib
