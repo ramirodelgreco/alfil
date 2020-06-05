@@ -1,8 +1,13 @@
 {
   "name": "pulpo",
-  "version": "0.1.0",
-  "description": "Minimal data validation library.",
-  "main": "index.js",
+  "version": "0.2.0",
+  "description": "Minimal and lightweight data validation Javascript library.",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pascualmj/pulpo.git"
+  },
+  "homepage": "https://github.com/pascualmj/pulpo",
   "scripts": {
     "dev": "node pulpo.playground.js",
     "lint": "eslint src/*",
@@ -20,7 +25,9 @@
       "prettier --write"
     ]
   },
-  "author": "pascualmj",
+  "author": {
+    "name": "@pascualmj Manuel Pascual"
+  },
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.1.0",
