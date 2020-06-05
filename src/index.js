@@ -1,3 +1,1 @@
-const Pulpo = require("./Pulpo");
-
-module.exports = Pulpo;
+module.exports = require("./Pulpo");

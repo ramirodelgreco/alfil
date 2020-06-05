@@ -1,5 +1,5 @@
 // Error Messages
-const errorMessages = {
+exports.errorMessages = {
   differentKeys: "Both schema and object must have the same keys.",
   notAString: "Value must be a string.",
   requiredValue: "Value must not be empty.",
@@ -9,11 +9,6 @@ const errorMessages = {
 };
 
 // Regular Expressions
-const regularExpressions = {
+exports.regularExpressions = {
   emailRegex: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-};
-
-module.exports = {
-  errorMessages,
-  regularExpressions,
 };

@@ -1,7 +1,2 @@
-const pulpoError = require("./pulpoError");
-const isEmail = require("./isEmail");
-
-module.exports = {
-  pulpoError,
-  isEmail,
-};
+exports.pulpoError = require("./pulpoError");
+exports.isEmail = require("./isEmail");

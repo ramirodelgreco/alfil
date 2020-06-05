@@ -25,7 +25,6 @@ class PulpoValidator {
           },
         });
       }
-      // this.checkOveralValidation();
     }
     return { ...this.validationResults };
   }
@@ -46,17 +45,6 @@ class PulpoValidator {
     if (error !== undefined) this.validationResults.error = error;
     if (this.validationResults.isValid === undefined) this.validationResults.isValid = true;
   }
-
-  // checkOveralValidation() {
-  //   if (!this.validationResults.data) return;
-  //   this.validationResults.isValid = true;
-  //   for (let field in this.validationResults.data) {
-  //     if (!this.validationResults.data[field].isValid) {
-  //       this.validationResults.isValid = false;
-  //       break;
-  //     }
-  //   }
-  // }
 
   static isObjectEqualToSchema(obj, schema) {
     return utils.arraysAreEqual(Object.keys(schema), Object.keys(obj));
