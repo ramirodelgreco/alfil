@@ -1,10 +1,11 @@
 const PulpoType = require("./PulpoType");
-const { pulpoError } = require("../functions");
+const { pulpoError, isEmail } = require("../functions");
 
 class PulpoString extends PulpoType {
-  constructor() {
+  constructor(opts = {}) {
     super();
     this.validatorChain.push([this.isCorrectType, pulpoError("notAString")]);
+    this.opts = opts;
   }
 
   isCorrectType(val) {
@@ -12,18 +13,35 @@ class PulpoString extends PulpoType {
   }
 
   required() {
-    this.validatorChain.push([val => !!val.length, pulpoError("requiredValue")]);
+    this.validatorChain.push([val => !!this.applyOptions(val).length, pulpoError("requiredValue")]);
+    return this;
+  }
+
+  email() {
+    this.validatorChain.push([val => isEmail(this.applyOptions(val)), pulpoError("stringEmail")]);
     return this;
   }
 
   min(minVal) {
-    this.validatorChain.push([val => val.length >= minVal, pulpoError("stringMinLength", minVal)]);
+    this.validatorChain.push([
+      val => this.applyOptions(val).length >= minVal,
+      pulpoError("stringMinLength", minVal),
+    ]);
     return this;
   }
 
   max(maxVal) {
-    this.validatorChain.push([val => val.length <= maxVal, pulpoError("stringMaxLength", maxVal)]);
+    this.validatorChain.push([
+      val => this.applyOptions(val).length <= maxVal,
+      pulpoError("stringMaxLength", maxVal),
+    ]);
     return this;
+  }
+
+  applyOptions(val) {
+    let result = val;
+    if (this.opts.trim === true) result = result.trim();
+    return result;
   }
 }
 

@@ -6,8 +6,8 @@ class Pulpo {
     return new PulpoValidator(schema);
   }
 
-  static string() {
-    return new PulpoString();
+  static string(opts) {
+    return new PulpoString(opts);
   }
 }
 
