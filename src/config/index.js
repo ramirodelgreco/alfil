@@ -6,9 +6,17 @@ exports.errorMessages = {
   stringMinLength: val => `Value must be longer than or equal to ${val}.`,
   stringMaxLength: val => `Value must be shorter than or equal to ${val}.`,
   stringEmail: "Value must be a valid email account.",
+  stringPassword: "Value must be a valid password.",
 };
 
 // Regular Expressions
 exports.regularExpressions = {
   emailRegex: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+  passwordRegex: {
+    complex: /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
+    moderate: /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/,
+  },
 };
+
+// Default Password Regex
+exports.defaultPasswordRegex = "moderate";
