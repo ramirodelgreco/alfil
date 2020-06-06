@@ -1,7 +1,7 @@
 const { regularExpressions } = require("../config");
 
 const isEmail = val => {
-  return val.match(regularExpressions.emailRegex);
+  return regularExpressions.emailRegex.test(val);
 };
 
 module.exports = isEmail;
