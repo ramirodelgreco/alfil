@@ -1,35 +1,49 @@
 const PulpoType = require("./PulpoType");
 const { pulpoError, isEmail, isSafePassword } = require("../functions");
 const { defaultPasswordRegex } = require("../config");
+const { isString, isRegex } = require("../utils");
 
 class PulpoString extends PulpoType {
   constructor(opts = {}) {
     super();
-    this.validatorChain.push([this.isCorrectType, pulpoError("notAString")]);
+    this.addValidator([this.isCorrectType, pulpoError("notAString")]);
     this.opts = opts;
   }
 
   isCorrectType(val) {
-    return Object.prototype.toString.call(val) === "[object String]";
+    return isString(val);
   }
 
   required() {
-    this.validatorChain.push([val => !!this.applyOptions(val).length, pulpoError("requiredValue")]);
+    this.addValidator([val => !!this.applyOptions(val).length, pulpoError("requiredValue")]);
     return this;
   }
 
   email() {
-    this.validatorChain.push([val => isEmail(this.applyOptions(val)), pulpoError("stringEmail")]);
+    this.addValidator([val => isEmail(this.applyOptions(val)), pulpoError("stringEmail")]);
     return this;
   }
 
   password({ type = defaultPasswordRegex } = {}) {
-    this.validatorChain.push([val => isSafePassword(val, type), pulpoError("stringPassword")]);
+    this.addValidator([val => isSafePassword(val, type), pulpoError("stringPassword")]);
+    return this;
+  }
+
+  match(regex) {
+    let fnValidator, errorMessage;
+    if (!isRegex(regex)) {
+      fnValidator = val => false;
+      errorMessage = pulpoError("notARegex");
+    } else {
+      fnValidator = val => regex.test(this.applyOptions(val));
+      errorMessage = pulpoError("stringMatch");
+    }
+    this.addValidator([fnValidator, errorMessage]);
     return this;
   }
 
   min(minVal) {
-    this.validatorChain.push([
+    this.addValidator([
       val => this.applyOptions(val).length >= minVal,
       pulpoError("stringMinLength", minVal),
     ]);
@@ -37,7 +51,7 @@ class PulpoString extends PulpoType {
   }
 
   max(maxVal) {
-    this.validatorChain.push([
+    this.addValidator([
       val => this.applyOptions(val).length <= maxVal,
       pulpoError("stringMaxLength", maxVal),
     ]);

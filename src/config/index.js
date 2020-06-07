@@ -7,6 +7,8 @@ exports.errorMessages = {
   stringMaxLength: val => `Value must be shorter than or equal to ${val}.`,
   stringEmail: "Value must be a valid email account.",
   stringPassword: "Value must be a valid password.",
+  stringMatch: "Value must match with the regular expression provided.",
+  notARegex: "Argument must be a valid regular expression.",
 };
 
 // Regular Expressions

@@ -10,3 +10,11 @@ exports.arraysAreEqual = (_arr1, _arr2) => {
 
   return true;
 };
+
+exports.isString = val => {
+  return Object.prototype.toString.call(val) === "[object String]";
+};
+
+exports.isRegex = val => {
+  return val instanceof RegExp;
+};

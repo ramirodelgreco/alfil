@@ -1,4 +1,4 @@
-const utils = require("../utils");
+const { arraysAreEqual } = require("../utils");
 const { pulpoError } = require("../functions");
 
 class PulpoValidator {
@@ -47,7 +47,7 @@ class PulpoValidator {
   }
 
   static isObjectEqualToSchema(obj, schema) {
-    return utils.arraysAreEqual(Object.keys(schema), Object.keys(obj));
+    return arraysAreEqual(Object.keys(schema), Object.keys(obj));
   }
 }
 
