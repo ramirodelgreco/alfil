@@ -18,3 +18,7 @@ exports.isString = val => {
 exports.isRegex = val => {
   return val instanceof RegExp;
 };
+
+exports.isBool = val => {
+  return val === true || val === false;
+};
