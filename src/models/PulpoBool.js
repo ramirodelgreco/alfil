@@ -11,6 +11,16 @@ class PulpoBool extends PulpoType {
   isCorrectType(val) {
     return isBool(val);
   }
+
+  true() {
+    this.addValidator([val => val === true, pulpoError("booleanTrue")]);
+    return this;
+  }
+
+  false() {
+    this.addValidator([val => val === false, pulpoError("booleanFalse")]);
+    return this;
+  }
 }
 
 module.exports = PulpoBool;

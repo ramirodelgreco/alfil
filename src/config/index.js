@@ -10,6 +10,8 @@ exports.errorMessages = {
   stringEmail: "Value must be a valid email account.",
   stringPassword: "Value must be a valid password.",
   stringMatch: "Value must match with the regular expression provided.",
+  booleanTrue: "Value must be true.",
+  booleanFalse: "Value must be false.",
 };
 
 // Regular Expressions
