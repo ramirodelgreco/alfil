@@ -8,6 +8,7 @@ class PulpoString extends PulpoType {
     super();
     this.addValidator([this.isCorrectType, pulpoError("notAString")]);
     this.opts = opts;
+    this.isRequired = false;
   }
 
   isCorrectType(val) {
@@ -15,17 +16,24 @@ class PulpoString extends PulpoType {
   }
 
   required() {
+    this.isRequired = true;
     this.addValidator([val => !!this.applyOptions(val).length, pulpoError("requiredValue")]);
     return this;
   }
 
   email() {
-    this.addValidator([val => isEmail(this.applyOptions(val)), pulpoError("stringEmail")]);
+    this.addValidator([
+      this.generateValidatorFunction(val => isEmail(this.applyOptions(val)), true),
+      pulpoError("stringEmail"),
+    ]);
     return this;
   }
 
   password({ type = defaultPasswordRegex } = {}) {
-    this.addValidator([val => isSafePassword(val, type), pulpoError("stringPassword")]);
+    this.addValidator([
+      this.generateValidatorFunction(val => isSafePassword(val, type), false),
+      pulpoError("stringPassword"),
+    ]);
     return this;
   }
 
@@ -38,13 +46,13 @@ class PulpoString extends PulpoType {
       fnValidator = val => regex.test(this.applyOptions(val));
       errorMessage = pulpoError("stringMatch");
     }
-    this.addValidator([fnValidator, errorMessage]);
+    this.addValidator([this.generateValidatorFunction(fnValidator, true), errorMessage]);
     return this;
   }
 
   min(minVal) {
     this.addValidator([
-      val => this.applyOptions(val).length >= minVal,
+      this.generateValidatorFunction(val => this.applyOptions(val).length >= minVal, true),
       pulpoError("stringMinLength", minVal),
     ]);
     return this;
@@ -52,7 +60,7 @@ class PulpoString extends PulpoType {
 
   max(maxVal) {
     this.addValidator([
-      val => this.applyOptions(val).length <= maxVal,
+      this.generateValidatorFunction(val => this.applyOptions(val).length <= maxVal, true),
       pulpoError("stringMaxLength", maxVal),
     ]);
     return this;
@@ -62,6 +70,16 @@ class PulpoString extends PulpoType {
     let result = val;
     if (this.opts.trim === true) result = result.trim();
     return result;
+  }
+
+  generateValidatorFunction(fnExpression, applyOpts) {
+    return val => {
+      const isNotEmpty = applyOpts ? !!this.applyOptions(val).length : !!val.length;
+      if (this.isRequired || isNotEmpty) {
+        return fnExpression(val);
+      }
+      return true;
+    };
   }
 }
 
