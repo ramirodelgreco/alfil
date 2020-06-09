@@ -6,6 +6,7 @@ exports.errorMessages = {
   notARegex: "Argument must be a valid regular expression.",
   notAnArray: "Argument must be an array.",
   notABool: "Value must be a boolean.",
+  notANumber: "Value must be a number.",
   requiredValue: "Value must not be empty.",
   stringMinLength: val => `Value must be longer than or equal to ${val}.`,
   stringMaxLength: val => `Value must be shorter than or equal to ${val}.`,
@@ -16,6 +17,10 @@ exports.errorMessages = {
   stringMatch: "Value must match with the regular expression provided.",
   booleanTrue: "Value must be true.",
   booleanFalse: "Value must be false.",
+  numberMin: val => `Value must be greater than or equal to ${val}.`,
+  numberMax: val => `Value must be less than or equal to ${val}.`,
+  numberInteger: "Value must be an integer.",
+  numberFloat: "Value must be a float.",
 };
 
 // Regular Expressions

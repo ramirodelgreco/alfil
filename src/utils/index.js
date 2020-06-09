@@ -22,3 +22,7 @@ exports.isRegex = val => {
 exports.isBool = val => {
   return val === true || val === false;
 };
+
+exports.isNumber = val => {
+  return typeof val === "number";
+};
