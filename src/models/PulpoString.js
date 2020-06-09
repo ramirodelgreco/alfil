@@ -1,6 +1,6 @@
 const PulpoType = require("./PulpoType");
-const { pulpoError, isEmail, isSafePassword } = require("../functions");
-const { defaultPasswordRegex } = require("../config");
+const { pulpoError, isEmail, isSafePassword, isUrl } = require("../functions");
+const { defaultPasswordRegex, defaultUrlRegex } = require("../config");
 const { isString, isRegex } = require("../utils");
 
 class PulpoString extends PulpoType {
@@ -33,6 +33,14 @@ class PulpoString extends PulpoType {
     this.addValidator([
       this.generateValidatorFunction(val => isSafePassword(val, type), false),
       pulpoError("stringPassword"),
+    ]);
+    return this;
+  }
+
+  url({ type = defaultUrlRegex } = {}) {
+    this.addValidator([
+      this.generateValidatorFunction(val => isUrl(this.applyOptions(val), type), true),
+      pulpoError("stringUrl"),
     ]);
     return this;
   }
