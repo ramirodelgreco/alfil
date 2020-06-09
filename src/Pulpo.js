@@ -16,8 +16,8 @@ class Pulpo {
     return new PulpoBool();
   }
 
-  static number() {
-    return new PulpoNumber();
+  static number(opts) {
+    return new PulpoNumber(opts);
   }
 }
 
