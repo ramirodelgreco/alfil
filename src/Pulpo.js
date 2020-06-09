@@ -4,6 +4,10 @@ const PulpoBool = require("./models/PulpoBool");
 const PulpoNumber = require("./models/PulpoNumber");
 
 class Pulpo {
+  constructor() {
+    throw new Error("Pulpo: Can not instantiate abstract Pulpo Class.");
+  }
+
   static createValidator(schema) {
     return new PulpoValidator(schema);
   }
