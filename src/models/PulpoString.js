@@ -66,6 +66,19 @@ class PulpoString extends PulpoType {
     return this;
   }
 
+  enum(arrOptions) {
+    let fnValidator, errorMessage;
+    if (!Array.isArray(arrOptions)) {
+      fnValidator = val => false;
+      errorMessage = pulpoError("notAnArray");
+    } else {
+      fnValidator = val => arrOptions.includes(this.applyOptions(val));
+      errorMessage = pulpoError("stringEnum", arrOptions);
+    }
+    this.addValidator([this.generateValidatorFunction(fnValidator, true), errorMessage]);
+    return this;
+  }
+
   applyOptions(val) {
     let result = val;
     if (this.opts.trim === true) result = result.trim();
