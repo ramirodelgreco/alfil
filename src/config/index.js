@@ -1,5 +1,6 @@
 // Error Messages
 exports.errorMessages = {
+  noResults: "No validation results found.",
   differentKeys: "Both schema and object must have the same keys.",
   notAString: "Value must be a string.",
   notARegex: "Argument must be a valid regular expression.",

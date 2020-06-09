@@ -46,6 +46,11 @@ class PulpoValidator {
     if (this.validationResults.isValid === undefined) this.validationResults.isValid = true;
   }
 
+  getResults() {
+    if (!Object.keys(this.validationResults).length) throw new Error(pulpoError("noResults"));
+    return this.validationResults;
+  }
+
   static isObjectEqualToSchema(obj, schema) {
     return arraysAreEqual(Object.keys(schema), Object.keys(obj));
   }
