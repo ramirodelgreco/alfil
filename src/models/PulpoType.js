@@ -6,6 +6,7 @@ class PulpoType {
     this.validatorChain = [];
     this.errors = [];
     this.labelName = defaultLabelName;
+    this.customError = null;
   }
 
   addValidator(validator) {
@@ -24,7 +25,11 @@ class PulpoType {
   }
 
   addError(error) {
-    this.errors.push(error.replace(new RegExp(defaultLabelName, "gi"), this.labelName));
+    if (!this.customError) {
+      this.errors.push(error.replace(new RegExp(defaultLabelName, "gi"), this.labelName));
+      return;
+    }
+    if (!this.errors.length) this.errors.push(this.customError);
   }
 
   isSuccess(validator, ...args) {
@@ -33,6 +38,11 @@ class PulpoType {
 
   label(label) {
     if (isString(label)) this.labelName = label;
+    return this;
+  }
+
+  errorText(customError) {
+    if (isString(customError)) this.customError = customError;
     return this;
   }
 }
