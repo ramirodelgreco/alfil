@@ -3,6 +3,9 @@
   "version": "0.6.0",
   "description": "Minimal and lightweight data validation Javascript library.",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pascualmj/alfil.git"
