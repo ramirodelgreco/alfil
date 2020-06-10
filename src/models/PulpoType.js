@@ -1,7 +1,11 @@
+const { defaultLabelName } = require("../config");
+const { isString } = require("../utils");
+
 class PulpoType {
   constructor() {
     this.validatorChain = [];
     this.errors = [];
+    this.labelName = defaultLabelName;
   }
 
   addValidator(validator) {
@@ -20,11 +24,16 @@ class PulpoType {
   }
 
   addError(error) {
-    this.errors.push(error);
+    this.errors.push(error.replace(new RegExp(defaultLabelName, "gi"), this.labelName));
   }
 
   isSuccess(validator, ...args) {
     return validator(...args);
+  }
+
+  label(label) {
+    if (isString(label)) this.labelName = label;
+    return this;
   }
 }
 

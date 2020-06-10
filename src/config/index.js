@@ -1,27 +1,35 @@
+// Default Label Name
+exports.defaultLabelName = "Value";
+
 // Error Messages
 exports.errorMessages = {
   noResults: "No validation results found.",
   differentKeys: "Both schema and object must have the same keys.",
-  notAString: "Value must be a string.",
+  notAString: `${module.exports.defaultLabelName} must be a string.`,
   notARegex: "Argument must be a valid regular expression.",
   notAnArray: "Argument must be an array.",
-  notABool: "Value must be a boolean.",
-  notANumber: "Value must be a number.",
-  requiredValue: "Value must not be empty.",
-  stringMinLength: val => `Value must be longer than or equal to ${val}.`,
-  stringMaxLength: val => `Value must be shorter than or equal to ${val}.`,
-  stringEnum: options => `Value must be one of the following options: ${options.join(", ")}.`,
-  stringEmail: "Value must be a valid email account.",
-  stringPassword: "Value must be a valid password.",
-  stringUsername: "Value must be a valid username.",
-  stringUrl: "Value must be a valid URL.",
-  stringMatch: "Value must match with the regular expression provided.",
-  booleanTrue: "Value must be true.",
-  booleanFalse: "Value must be false.",
-  numberMin: val => `Value must be greater than or equal to ${val}.`,
-  numberMax: val => `Value must be less than or equal to ${val}.`,
-  numberInteger: "Value must be an integer.",
-  numberFloat: "Value must be a float.",
+  notABool: `${module.exports.defaultLabelName} must be a boolean.`,
+  notANumber: `${module.exports.defaultLabelName} must be a number.`,
+  requiredValue: `${module.exports.defaultLabelName} must not be empty.`,
+  stringMinLength: val =>
+    `${module.exports.defaultLabelName} must be longer than or equal to ${val}.`,
+  stringMaxLength: val =>
+    `${module.exports.defaultLabelName} must be shorter than or equal to ${val}.`,
+  stringEnum: options =>
+    `${module.exports.defaultLabelName} must be one of the following options: ${options.join(
+      ", "
+    )}.`,
+  stringEmail: `${module.exports.defaultLabelName} must be a valid email account.`,
+  stringPassword: `${module.exports.defaultLabelName} must be a valid password.`,
+  stringUsername: `${module.exports.defaultLabelName} must be a valid username.`,
+  stringUrl: `${module.exports.defaultLabelName} must be a valid URL.`,
+  stringMatch: `${module.exports.defaultLabelName} must match with the regular expression provided.`,
+  booleanTrue: `${module.exports.defaultLabelName} must be true.`,
+  booleanFalse: `${module.exports.defaultLabelName} must be false.`,
+  numberMin: val => `${module.exports.defaultLabelName} must be greater than or equal to ${val}.`,
+  numberMax: val => `${module.exports.defaultLabelName} must be less than or equal to ${val}.`,
+  numberInteger: `${module.exports.defaultLabelName} must be an integer.`,
+  numberFloat: `${module.exports.defaultLabelName} must be a float.`,
 };
 
 // Regular Expressions
