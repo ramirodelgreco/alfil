@@ -13,6 +13,7 @@ exports.errorMessages = {
   stringEnum: options => `Value must be one of the following options: ${options.join(", ")}.`,
   stringEmail: "Value must be a valid email account.",
   stringPassword: "Value must be a valid password.",
+  stringUsername: "Value must be a valid username.",
   stringUrl: "Value must be a valid URL.",
   stringMatch: "Value must match with the regular expression provided.",
   booleanTrue: "Value must be true.",
@@ -30,6 +31,7 @@ exports.regularExpressions = {
     complex: /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/,
     moderate: /(?=(.*[0-9]))((?=.*[A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z]))^.{8,}$/,
   },
+  usernameRegex: /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/gi,
   urlRegex: {
     requiredProtocol: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g,
     optionalProtocol: /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/g,

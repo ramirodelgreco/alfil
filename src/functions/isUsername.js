@@ -1,7 +1,7 @@
 const { regularExpressions } = require("../config");
 
-const isUrl = val => {
+const isUsername = val => {
   return regularExpressions.usernameRegex.test(val);
 };
 
-module.exports = isUrl;
+module.exports = isUsername;
