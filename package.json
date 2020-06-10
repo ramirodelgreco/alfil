@@ -1,6 +1,6 @@
 {
   "name": "pulpo",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Minimal and lightweight data validation Javascript library.",
   "main": "lib/index.js",
   "repository": {
