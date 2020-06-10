@@ -1,11 +1,11 @@
-const PulpoType = require("./PulpoType");
-const { pulpoError } = require("../functions");
+const AlfilType = require("./AlfilType");
+const { alfilError } = require("../functions");
 const { isNumber } = require("../utils");
 
-class PulpoNumber extends PulpoType {
+class AlfilNumber extends AlfilType {
   constructor({ emptyValue = null } = {}) {
     super();
-    this.addValidator([this.isCorrectType.bind(this), pulpoError("notANumber")]);
+    this.addValidator([this.isCorrectType.bind(this), alfilError("notANumber")]);
     this.isRequired = false;
     this.emptyValue = emptyValue;
   }
@@ -17,14 +17,14 @@ class PulpoNumber extends PulpoType {
 
   required() {
     this.isRequired = true;
-    this.addValidator([val => val !== this.emptyValue, pulpoError("requiredValue")]);
+    this.addValidator([val => val !== this.emptyValue, alfilError("requiredValue")]);
     return this;
   }
 
   min(minVal) {
     this.addValidator([
       this.generateValidatorFunction(val => val >= minVal),
-      pulpoError("numberMin", minVal),
+      alfilError("numberMin", minVal),
     ]);
     return this;
   }
@@ -32,7 +32,7 @@ class PulpoNumber extends PulpoType {
   max(maxVal) {
     this.addValidator([
       this.generateValidatorFunction(val => val <= maxVal),
-      pulpoError("numberMax", maxVal),
+      alfilError("numberMax", maxVal),
     ]);
     return this;
   }
@@ -40,7 +40,7 @@ class PulpoNumber extends PulpoType {
   integer() {
     this.addValidator([
       this.generateValidatorFunction(val => Number.isInteger(val)),
-      pulpoError("numberInteger"),
+      alfilError("numberInteger"),
     ]);
     return this;
   }
@@ -48,7 +48,7 @@ class PulpoNumber extends PulpoType {
   float() {
     this.addValidator([
       this.generateValidatorFunction(val => !Number.isInteger(val)),
-      pulpoError("numberFloat"),
+      alfilError("numberFloat"),
     ]);
     return this;
   }
@@ -64,4 +64,4 @@ class PulpoNumber extends PulpoType {
   }
 }
 
-module.exports = PulpoNumber;
+module.exports = AlfilNumber;

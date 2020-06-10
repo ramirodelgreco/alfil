@@ -1,15 +1,15 @@
 {
-  "name": "pulpo",
+  "name": "alfil",
   "version": "0.6.0",
   "description": "Minimal and lightweight data validation Javascript library.",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pascualmj/pulpo.git"
+    "url": "git+https://github.com/pascualmj/alfil.git"
   },
-  "homepage": "https://github.com/pascualmj/pulpo",
+  "homepage": "https://github.com/pascualmj/alfil",
   "scripts": {
-    "dev": "node pulpo.playground.js",
+    "dev": "node alfil.playground.js",
     "lint": "eslint src/*",
     "lint:fix": "eslint --fix src/*",
     "format": "prettier --write 'src/**/*.js'",

@@ -1,17 +1,17 @@
 const { arraysAreEqual } = require("../utils");
-const { pulpoError } = require("../functions");
+const { alfilError } = require("../functions");
 
-class PulpoValidator {
+class AlfilValidator {
   constructor(schema) {
     this.schema = schema;
     this.validationResults = {};
   }
 
   validate(obj) {
-    if (!PulpoValidator.isObjectEqualToSchema(obj, this.schema)) {
+    if (!AlfilValidator.isObjectEqualToSchema(obj, this.schema)) {
       this.generateValidationResults({
         isValid: false,
-        error: pulpoError("differentKeys"),
+        error: alfilError("differentKeys"),
       });
     } else {
       for (let key in obj) {
@@ -47,7 +47,7 @@ class PulpoValidator {
   }
 
   getResults() {
-    if (!Object.keys(this.validationResults).length) throw new Error(pulpoError("noResults"));
+    if (!Object.keys(this.validationResults).length) throw new Error(alfilError("noResults"));
     return this.validationResults;
   }
 
@@ -56,4 +56,4 @@ class PulpoValidator {
   }
 }
 
-module.exports = PulpoValidator;
+module.exports = AlfilValidator;

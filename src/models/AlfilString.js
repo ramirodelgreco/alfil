@@ -1,12 +1,12 @@
-const PulpoType = require("./PulpoType");
-const { pulpoError, isEmail, isSafePassword, isUrl, isUsername } = require("../functions");
+const AlfilType = require("./AlfilType");
+const { alfilError, isEmail, isSafePassword, isUrl, isUsername } = require("../functions");
 const { defaultPasswordRegex, defaultUrlRegex } = require("../config");
 const { isString, isRegex } = require("../utils");
 
-class PulpoString extends PulpoType {
+class AlfilString extends AlfilType {
   constructor({ trim = false, emptyValue = "" } = {}) {
     super();
-    this.addValidator([this.isCorrectType.bind(this), pulpoError("notAString")]);
+    this.addValidator([this.isCorrectType.bind(this), alfilError("notAString")]);
     this.isRequired = false;
     this.emptyValue = emptyValue;
     this.trim = trim;
@@ -21,7 +21,7 @@ class PulpoString extends PulpoType {
     this.isRequired = true;
     this.addValidator([
       val => this.applyOptions(val) !== this.emptyValue,
-      pulpoError("requiredValue"),
+      alfilError("requiredValue"),
     ]);
     return this;
   }
@@ -32,7 +32,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? isEmail(this.applyOptions(val)) : false),
         true
       ),
-      pulpoError("stringEmail"),
+      alfilError("stringEmail"),
     ]);
     return this;
   }
@@ -43,7 +43,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? isSafePassword(val, type) : false),
         false
       ),
-      pulpoError("stringPassword"),
+      alfilError("stringPassword"),
     ]);
     return this;
   }
@@ -54,7 +54,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? isUsername(this.applyOptions(val)) : false),
         true
       ),
-      pulpoError("stringUsername"),
+      alfilError("stringUsername"),
     ]);
     return this;
   }
@@ -65,7 +65,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? isUrl(this.applyOptions(val), type) : false),
         true
       ),
-      pulpoError("stringUrl"),
+      alfilError("stringUrl"),
     ]);
     return this;
   }
@@ -74,10 +74,10 @@ class PulpoString extends PulpoType {
     let fnValidator, errorMessage;
     if (!isRegex(regex)) {
       fnValidator = val => false;
-      errorMessage = pulpoError("notARegex");
+      errorMessage = alfilError("notARegex");
     } else {
       fnValidator = val => (isString(val) ? regex.test(this.applyOptions(val)) : false);
-      errorMessage = pulpoError("stringMatch");
+      errorMessage = alfilError("stringMatch");
     }
     this.addValidator([this.generateValidatorFunction(fnValidator, true), errorMessage]);
     return this;
@@ -89,7 +89,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? this.applyOptions(val).length >= minVal : false),
         true
       ),
-      pulpoError("stringMinLength", minVal),
+      alfilError("stringMinLength", minVal),
     ]);
     return this;
   }
@@ -100,7 +100,7 @@ class PulpoString extends PulpoType {
         val => (isString(val) ? this.applyOptions(val).length <= maxVal : false),
         true
       ),
-      pulpoError("stringMaxLength", maxVal),
+      alfilError("stringMaxLength", maxVal),
     ]);
     return this;
   }
@@ -109,10 +109,10 @@ class PulpoString extends PulpoType {
     let fnValidator, errorMessage;
     if (!Array.isArray(arrOptions)) {
       fnValidator = val => false;
-      errorMessage = pulpoError("notAnArray");
+      errorMessage = alfilError("notAnArray");
     } else {
       fnValidator = val => (isString(val) ? arrOptions.includes(this.applyOptions(val)) : false);
-      errorMessage = pulpoError("stringEnum", arrOptions);
+      errorMessage = alfilError("stringEnum", arrOptions);
     }
     this.addValidator([this.generateValidatorFunction(fnValidator, true), errorMessage]);
     return this;
@@ -137,4 +137,4 @@ class PulpoString extends PulpoType {
   }
 }
 
-module.exports = PulpoString;
+module.exports = AlfilString;

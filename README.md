@@ -1,6 +1,6 @@
-# Pulpo 🐙
+# Alfil 🐙
 
-Pulpo is a lightweight Javascript library for data validation.
+Alfil is a lightweight Javascript library for data validation.
 
 ## Progress
 

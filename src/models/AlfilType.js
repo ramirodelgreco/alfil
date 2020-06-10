@@ -1,7 +1,7 @@
 const { defaultLabelName } = require("../config");
 const { isString } = require("../utils");
 
-class PulpoType {
+class AlfilType {
   constructor() {
     this.validatorChain = [];
     this.errors = [];
@@ -47,4 +47,4 @@ class PulpoType {
   }
 }
 
-module.exports = PulpoType;
+module.exports = AlfilType;
