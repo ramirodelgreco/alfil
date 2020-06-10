@@ -1,4 +1,4 @@
-# Alfil 🐙
+# Alfil
 
 Alfil is a lightweight Javascript library for data validation.
 
