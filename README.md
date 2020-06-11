@@ -2,9 +2,21 @@
 
 Alfil is a lightweight Javascript library for data validation.
 
-## Progress
+## READ THIS
 
-This library is still in an early stage of development. Do not use it in production.
+This library is still in an early stage of development. Do not use it in production yet.
+
+## Installation
+
+Install Alfil using [npm](https://npmjs.org/):
+
+```bash
+npm i alfil
+```
+
+## Usage
+
+Alfil's documentation will be available very soon.
 
 ## Contributing
 
