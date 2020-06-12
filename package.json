@@ -1,6 +1,6 @@
 {
   "name": "alfil",
-  "version": "0.6.3",
+  "version": "0.6.4-rc.0",
   "description": "Minimal and lightweight data validation Javascript library.",
   "main": "lib/index.js",
   "files": [
