@@ -10,6 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/pascualmj/alfil.git"
   },
+  "keywords": [
+    "validation",
+    "schema",
+    "lightweight",
+    "minimalistic",
+    "forms",
+    "fields",
+    "formfields"
+  ],
   "homepage": "https://github.com/pascualmj/alfil",
   "scripts": {
     "dev": "node alfil.playground.js",
