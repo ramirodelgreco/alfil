@@ -1,4 +1,4 @@
-const AlfilBool = require("./AlfilBool");
+const AlfilBool = require("../../src/models/AlfilBool");
 
 describe("AlfilBool Tests", () => {
   test("Testing isCorrectType against true returns true.", () => {

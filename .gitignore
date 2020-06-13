@@ -4,6 +4,7 @@
 
 .DS_STORE
 .cache
+.vscode
 
 sandbox.js
 

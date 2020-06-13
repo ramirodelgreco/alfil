@@ -1,4 +1,4 @@
-const AlfilNumber = require("./AlfilNumber");
+const AlfilNumber = require("../../src/models/AlfilNumber");
 
 describe("AlfilNumber Tests", () => {
   test("Testing isCorrectType against 6 returns true.", () => {
