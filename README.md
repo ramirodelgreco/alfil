@@ -35,7 +35,7 @@ const myValidator = Alfil.createValidator({
 });
 ```
 
-3. Then, you can use your validator to validate your data. Following the same example as the previous step, let's suppose you have this data object:
+3. Then, you can use your validator to validate your data. Continuing with the example above, let's suppose you have the following data object:
 
 ```javascript
 const myDummyData = {
@@ -70,7 +70,7 @@ This may be the most common type you're going to use. As it's name suggest, this
 | -------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | required | -                         | Sets the data to be required, that means your validation will fail against an empty string (you can change this behaviour by setting a custom `emptyValue`, check it out here).                                                                                                                                                       |
 | email    | -                         | This method will expect a valid email address. Alfil uses an own regular expression to test the value. If you want to use a different RegExp, you can use the `match()` method that means your validation will fail against an empty string (you can change this behaviour by setting a custom `emptyValue`, check it out here).      |
-| password | `opts?: { type: string }` | This method will expect a "safe" password. The `type` property of the `opts` parameter let you decide which kind of password you prefer. Alfil provides you with 2 types of password: **"complex"** and **"moderate"**, being this last type the default one. Like the `email()` method, you can use your own RegExp using `match()`. |
+| password | `opts?: { type: string }` | This method will expect a "safe" password. The `type` property of the `opts` parameter let you decide which kind of password you prefer. Alfil provides you with 2 types of password: **"complex"** and **"moderate"**, the latter being the default. Like the `email()` method, you can use your own RegExp using `match()`. |
 | username | -                         | This method will expect a valid username.                                                                                                                                                                                                                                                                                             |
 | url      | `opts?: { type: string }` | This method will expect a valid url. The `type` property of the `opts` parameter let you decide which kind of url you prefer. Alfil provides you with 2 types of url: **"requiredProtocol"** and **"optionalProtocol"**, being this last type the default one.                                                                        |
 | match    | `regex: Regex`            | This method will test the value against the regular expression provided as an argument.                                                                                                                                                                                                                                               |
@@ -119,7 +119,7 @@ Or you can access these results later using the `getResults` method:
 ```javascript
 const myResults =  myValidatorSchema.getResults();
 ```
-**Have in mind that if you don't run your validations (with the `validate` method) before getting the results, this will throw an Error.**
+**Keep in mind that if you don't run your validations (with the `validate` method) before getting the results, this will throw an Error.**
 
 ## 🤝 CONTRIBUTING
 
