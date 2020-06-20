@@ -35,7 +35,7 @@ const myValidator = Alfil.createValidator({
 });
 ```
 
-3. Then, you can use your validator to validate your data. Following the same example as the previous step, let's suppose you have this data object:
+3. Then, you can use your validator to validate your data. Continuing with the previous example, let's suppose you have the following data object:
 
 ```javascript
 const myDummyData = {
@@ -61,7 +61,7 @@ if (validationResults.isValid) {
 
 ## ALFIL TYPES
 
-Alfil provides different types of data to give shape to your validators. Every type has it's own methods and properties, so let's dive into the details:
+Alfil provides different types of data to shape your validators. Every type has it's own methods and properties, so let's dive into the details:
 
 ### Alfil.string(options)
 This may be the most common type you're going to use. As it's name suggest, this type will expect a String value when your validation process runs. Next, we'll see it's methods and options:
@@ -69,10 +69,10 @@ This may be the most common type you're going to use. As it's name suggest, this
 | Method  | Params                    | Explanation                                                                                                                                                                                                                                                                                                                           |
 | -------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | required | -                         | Sets the data to be required, that means your validation will fail against an empty string (you can change this behaviour by setting a custom `emptyValue`, check it out here).                                                                                                                                                       |
-| email    | -                         | This method will expect a valid email address. Alfil uses an own regular expression to test the value. If you want to use a different RegExp, you can use the `match()` method that means your validation will fail against an empty string (you can change this behaviour by setting a custom `emptyValue`, check it out here).      |
-| password | `opts?: { type: string }` | This method will expect a "safe" password. The `type` property of the `opts` parameter let you decide which kind of password you prefer. Alfil provides you with 2 types of password: **"complex"** and **"moderate"**, being this last type the default one. Like the `email()` method, you can use your own RegExp using `match()`. |
+| email    | -                         | This method will expect a valid email address. Alfil uses an own regular expression to validate. If you want to use a different RegExp, you can use the `match()` method, that means your validation will fail against an empty string (you can change this behaviour by setting a custom `emptyValue`, check it out here).      |
+| password | `opts?: { type: string }` | This method will expect a "safe" password. The `type` property of the `opts` parameter let you decide which kind of password you prefer. Alfil provides you with 2 types of password: **"complex"** and **"moderate"**, the latter being the default. Like the `email()` method, you can use your own RegExp using `match()`. |
 | username | -                         | This method will expect a valid username.                                                                                                                                                                                                                                                                                             |
-| url      | `opts?: { type: string }` | This method will expect a valid url. The `type` property of the `opts` parameter let you decide which kind of url you prefer. Alfil provides you with 2 types of url: **"requiredProtocol"** and **"optionalProtocol"**, being this last type the default one.                                                                        |
+| url      | `opts?: { type: string }` | This method will expect a valid url. The `type` property of the `opts` parameter let you decide what kind of url you prefer. Alfil provides you with 2 types of url: **"requiredProtocol"** and **"optionalProtocol"**, the latter being the default.                                                                        |
 | match    | `regex: Regex`            | This method will test the value against the regular expression provided as an argument.                                                                                                                                                                                                                                               |
 | min      | `minVal: number`          | This method will check if the length of the value is greater than or equal to `minVal`.                                                                                                                                                                                                                                               |
 | max      | `maxVal: number`          | This method will check if the length of the value is less than or equal to `maxVal`.                                                                                                                                                                                                                                                  |
@@ -81,11 +81,11 @@ This may be the most common type you're going to use. As it's name suggest, this
 **Options.** the Alfil's String type accepts an options object as an argument. You can use the following options to configure the default behaviour:
 |Option|Type|Default|Explanation|
 |-|-|-|-|
-|trim|boolean|`false`|If this option is setted to `true`, Alfil will apply the`trim()` method to the value before executing the validators, except for the password method defined in the previous table. |
+|trim|boolean|`false`|If this option is set to `true`, Alfil will apply the`trim()` method to the value before executing the validators, except for the password method defined in the previous table. |
 |emptyValue|string&#124;null|`""`|This option defines the value that has to be taken as an empty value.
 
 ### Alfil.number(options)
-This type will expect a Number value when your validations runs. Let's see it's methods and options:
+This type will expect a Number value when your validations run. Let's see it's methods and options:
 |Method|Params|explanation|
 |-|-|-|
 |required|-|Sets the data to be required, that means your validation will fail against a `null` value (like the Alfil's string you can change this behaviour by setting a custom `emptyValue` property inside the options object).|
@@ -111,7 +111,7 @@ The `createValidator` method from `Alfil` returns a validator schema. This let's
 ```javascript
 const myValidatorSchema = Alfil.createValidator({...});
 ```
-Run your validations using the `validate`method. This method returns the validation results object, so you can store it in a variable like this example:
+Run your validations using the `validate`method. This method returns the validation results object, so you can store it in a variable, for example:
 ```javascript
 const myResults =  myValidatorSchema.validate(myData);
 ```
@@ -119,7 +119,7 @@ Or you can access these results later using the `getResults` method:
 ```javascript
 const myResults =  myValidatorSchema.getResults();
 ```
-**Have in mind that if you don't run your validations (with the `validate` method) before getting the results, this will throw an Error.**
+**keep in mind that if you don't run your validations (with the `validate` method) before getting the results, this will throw an Error.**
 
 ## 🤝 CONTRIBUTING
 
